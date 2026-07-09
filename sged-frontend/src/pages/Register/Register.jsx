@@ -4,6 +4,7 @@ import { authService } from '../../services'
 import { toast } from 'react-toastify'
 import { getRoleFromEmail, getRoleLabel } from '../../utils/roles'
 import '../styles/auth.scss'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 /**
  * Página de Registro.
@@ -13,6 +14,7 @@ function Register() {
   const [apellido, setApellido] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const detectedRole = getRoleFromEmail(email)
@@ -83,14 +85,29 @@ function Register() {
 
           <div className="form-group">
             <label htmlFor="password">Contraseña</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={loading}
-            />
+            <div className="password-field">
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={loading}
+                autoComplete="new-password"
+                minLength={4}
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword((s) => !s)}
+                aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                tabIndex={0}
+                disabled={loading}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
 
           <button type="submit" disabled={loading}>
