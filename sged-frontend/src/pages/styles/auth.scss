@@ -1,0 +1,113 @@
+/* Estilos de Autenticación */
+
+$primary-color: #7c3aed;
+$secondary-color: #241b3d;
+$danger-color: #dc2626;
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7c3aed 0%, #0f766e 100%);
+  padding: 24px;
+}
+
+.auth-card {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 440px;
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+
+  > p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 1.6rem;
+  }
+}
+
+.register-hint,
+.register-role-badge {
+  text-align: center;
+  color: #475569;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    &:disabled {
+      background-color: #f8fafc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, $primary-color, #0f766e);
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 14px;
+  color: #475569;
+
+  a {
+    color: $primary-color;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
