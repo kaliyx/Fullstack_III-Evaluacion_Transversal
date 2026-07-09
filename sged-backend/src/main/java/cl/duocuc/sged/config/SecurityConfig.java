@@ -69,6 +69,8 @@ public class SecurityConfig {
                         // Endpoints públicos
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
+                        // Asegurar que cualquier endpoint bajo /api/auth/ sea público en desarrollo
+                        .requestMatchers("/api/auth/**").permitAll()
                         
                         // Health check
                         .requestMatchers("/actuator/health").permitAll()
@@ -86,7 +88,9 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                // Deshabilitar HTTP Basic para evitar la autenticación por defecto en dev
+                .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }

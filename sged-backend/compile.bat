@@ -4,7 +4,7 @@ REM Script para compilar SGED Backend con Maven
 setlocal enabledelayedexpansion
 
 REM Configurar PATH de Maven
-set MAVEN_HOME=C:\Program Files\Maven\apache-maven-3.9.x
+set MAVEN_HOME=C:\Users\israe\AppData\Local\Programs\apache-maven\apache-maven-3.9.9
 set PATH=%MAVEN_HOME%\bin;%PATH%
 
 REM Navegar al directorio del backend
